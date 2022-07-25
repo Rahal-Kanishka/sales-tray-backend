@@ -1,0 +1,19 @@
+{
+  "name": "sales-tray-backend",
+  "version": "1.0.0",
+  "description": "Node backend for SalesTray web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahal-Kanishka/sales-tray-backend.git"
+  },
+  "author": "Rahal Danthanarayana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rahal-Kanishka/sales-tray-backend/issues"
+  },
+  "homepage": "https://github.com/Rahal-Kanishka/sales-tray-backend#readme"
+}
