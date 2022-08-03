@@ -12,14 +12,16 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-  app:
+  backend-server:
     depends_on:
       - mysqldb
     build: .
-    restart: unless-stopped
-    env_file: ./.env
+    restart: always
+#    env_file: ./.env
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - "3000:3000"
+    volumes:
+      - ./src:/sales-tray-backend/src
     environment:
       - DB_HOST=mysqldb
       - DB_USER=$MYSQLDB_USER
