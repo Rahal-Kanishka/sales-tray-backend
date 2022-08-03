@@ -6,6 +6,6 @@ RUN npm install
 COPY . .
 
 # Exports
-EXPOSE 3000
+EXPOSE 3000 3306
 CMD [ "npm", "run", "dev" ]
 #CMD npm start
