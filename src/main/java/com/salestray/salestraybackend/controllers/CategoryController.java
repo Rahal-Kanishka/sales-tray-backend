@@ -1,6 +1,7 @@
 package com.salestray.salestraybackend.controllers;
 
 import com.salestray.salestraybackend.entities.Category;
+import com.salestray.salestraybackend.entities.Item;
 import com.salestray.salestraybackend.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,12 @@ public class CategoryController {
     public @ResponseBody List<Category> findByName(@RequestParam String name) {
         List<Category> result = categoryRepository.findByName(name);
         return result;
+    }
+
+    @GetMapping(path="/findByCategoryID")
+    public @ResponseBody List<Item> findItemsByCategory(@RequestParam Long categoryId) {
+        Category result = categoryRepository.findById(categoryId).orElse(null);
+        return result.getItemList();
     }
 
     @PostMapping (path="/add")
