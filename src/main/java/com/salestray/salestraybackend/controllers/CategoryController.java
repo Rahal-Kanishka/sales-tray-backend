@@ -6,6 +6,7 @@ import com.salestray.salestraybackend.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,8 +35,9 @@ public class CategoryController {
     }
 
     @PostMapping (path="/add")
-    public @ResponseBody Category addCategory() {
-        Category result = categoryRepository.save(null);
+    public @ResponseBody Category addCategory(@RequestBody Category category) {
+        category.setCreatedOn(new Date());
+        Category result = categoryRepository.save(category);
         return result;
     }
 
