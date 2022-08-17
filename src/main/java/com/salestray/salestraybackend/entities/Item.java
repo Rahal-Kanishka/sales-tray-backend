@@ -23,6 +23,14 @@ public class Item {
     private String code;
     @Column(name = "packing_size")
     private Integer packingSize;
+    @Column(name = "created_on")
+    private Date createdOn;
+    @Column(name = "created_by")
+    private Long createdBy;
+    @Column(name = "updated_on")
+    private Date updatedOn;
+    @Column(name = "updated_by")
+    private Long updatedBy;
     @ManyToOne
     @JsonIgnore
     private Category category;

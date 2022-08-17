@@ -22,8 +22,14 @@ public class Category {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "date_time")
-    private Date dateTime;
+    @Column(name = "created_on")
+    private Date createdOn;
+    @Column(name = "created_by")
+    private Long createdBy;
+    @Column(name = "updated_on")
+    private Date updatedOn;
+    @Column(name = "updated_by")
+    private Long updatedBy;
     // to tell relationship is already handled by the other entity
     @OneToMany(mappedBy = "category")
     @JsonIgnore
