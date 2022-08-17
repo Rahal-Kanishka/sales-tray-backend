@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Item")
@@ -25,5 +26,9 @@ public class Item {
     @ManyToOne
     @JsonIgnore
     private Category category;
+    // relationship already handles in GRN
+    @OneToMany(mappedBy = "item")
+    @JsonIgnore
+    private List<GRN> grnList;
 
 }
