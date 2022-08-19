@@ -4,6 +4,7 @@ import com.salestray.salestraybackend.entities.Category;
 import com.salestray.salestraybackend.entities.Item;
 import com.salestray.salestraybackend.repositories.CategoryRepository;
 import com.salestray.salestraybackend.repositories.ItemRepository;
+import com.salestray.salestraybackend.DTOs.requestDTOs.CreateItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,21 +47,24 @@ public class ItemController implements BasicController<Item>{
         return result;
     }
 
-    @Override
     @PostMapping(path="/add")
-    public @ResponseBody Item add(@RequestBody Item item, @RequestParam Long id) throws Exception {
-        // todo: new to create a separate DTO
+    public @ResponseBody Item addUsingDTO(@RequestBody CreateItemDTO createItemDTO) throws Exception {
+        Item result = null;
         // to set the category
-        if (id > 0) {
-            Category category = this.categoryRepository.findById(id).orElse(null);
+        if (createItemDTO.getCategoryId() > 0) {
+            Category category = this.categoryRepository.findById(createItemDTO.getCategoryId()).orElse(null);
             if (category == null){
                 throw new Exception("Category not found");
             } else {
+                Item item = new Item();
                 item.setCategory(category);
+                item.setName(createItemDTO.getName());
+                item.setCode(createItemDTO.getCode());
+                item.setPackingSize(createItemDTO.getPackingSize());
+                item.setCreatedOn(new Date());
+                result = itemRepository.save(item);
             }
         }
-        item.setCreatedOn(new Date());
-        Item result = itemRepository.save(item);
         return result;
     }
 

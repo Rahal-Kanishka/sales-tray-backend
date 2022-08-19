@@ -1,7 +1,5 @@
 package com.salestray.salestraybackend.controllers;
 
-import com.salestray.salestraybackend.entities.Item;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,10 +29,6 @@ public interface BasicController<T> {
     default @ResponseBody T add(@RequestBody T t) {
         return null;
     };
-
-    @PostMapping(path="/add")
-    @ResponseBody
-    Item add(@RequestBody Item item, @RequestParam Long id) throws Exception;
 
     /**
      * delete any given object from the db
