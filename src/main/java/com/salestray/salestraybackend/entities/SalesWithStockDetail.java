@@ -34,6 +34,10 @@ public class SalesWithStockDetail {
     private Long soldQuantity;
     @Column(name = "sold_price", nullable = false)
     private Double soldPrice;
+    @Column(name = "gross_sale")
+    private Double grossSale = 0.0;
+    @Column(name = "discount")
+    private Double discount = 0.0;
     @Column(name = "created_on")
     private Date createdOn;
     @Column(name = "created_by")
