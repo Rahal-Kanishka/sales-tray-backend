@@ -18,6 +18,10 @@ public interface SalesWithStockDetailsDTO {
 
     Double getSoldPrice();
 
+    Double getGrossSale();
+
+    Double getDiscount();
+
     Date getCreatedOn();
 
     Long getCreatedBy();
