@@ -10,7 +10,7 @@ import java.util.List;
 public interface SalesRecordRepository extends JpaRepository<SalesRecord,Long> {
 
     //use Projection
-    @Query("SELECT a.id as id,a.soldQuantity as soldQuantity,a.soldPrice as soldPrice,a.createdBy as createdBy,a.createdOn" +
+    @Query("SELECT a.id as id,a.createdBy as createdBy,a.createdOn" +
             " as createdOn,a.updatedBy as updatedBy,a.updatedOn as updatedOn FROM SalesRecord a")
     public List<SalesOnlyDTO> getAllOnlySalesRecords();
 }
