@@ -8,7 +8,7 @@ public interface SalesOnlyDTO {
 
     Long getSoldQuantity();
 
-    Double getSoldPrice();
+    double getSoldPrice();
 
     Date getCreatedOn();
 
@@ -17,5 +17,9 @@ public interface SalesOnlyDTO {
     Date getUpdatedOn();
 
     Long getUpdatedBy();
+
+    Long getRetailerId();
+
+    int getSaleTypeId();
 
 }
