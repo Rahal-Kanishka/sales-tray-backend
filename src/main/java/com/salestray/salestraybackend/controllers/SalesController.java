@@ -1,9 +1,13 @@
 package com.salestray.salestraybackend.controllers;
 
 import com.salestray.salestraybackend.DTOs.SalesOnlyDTO;
+import com.salestray.salestraybackend.DTOs.SalesWithStockDetailsDTO;
 import com.salestray.salestraybackend.entities.SalesRecord;
+import com.salestray.salestraybackend.entities.SalesWithStockDetail;
 import com.salestray.salestraybackend.repositories.SalesRecordRepository;
+import com.salestray.salestraybackend.repositories.SalesWithStockDetailRepository;
 import com.salestray.salestraybackend.repositories.StockRecordRepository;
+import com.salestray.salestraybackend.services.SalesRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,12 @@ public class SalesController implements BasicController<SalesRecord> {
     @Autowired
     private StockRecordRepository stockRecordRepository;
 
+    @Autowired
+    private SalesWithStockDetailRepository salesWithStockDetailRepository;
+
+    @Autowired
+    SalesRecordService salesRecordService;
+
 
     @Override
     @GetMapping(path="/all")
@@ -31,6 +41,11 @@ public class SalesController implements BasicController<SalesRecord> {
     @GetMapping(path="/all_sales_only")
     public List<SalesOnlyDTO> findAllSalesOnly() {
         return this.salesRecordRepository.getAllOnlySalesRecords();
+    }
+
+    @GetMapping(path="/all_sales_with_stock")
+    public List<SalesWithStockDetailsDTO> findAllSalesWithStock() {
+        return this.salesWithStockDetailRepository.getAllSalesWithStockRecords();
     }
 
     @Override
@@ -46,5 +61,9 @@ public class SalesController implements BasicController<SalesRecord> {
     @Override
     public SalesRecord getById(Long id) {
         return null;
+    }
+
+    public SalesRecord add(SalesOnlyDTO salesOnlyDTO){
+        return this.salesRecordService.createSalesRecord(salesOnlyDTO);
     }
 }
