@@ -31,7 +31,11 @@ public class StockRecord {
     // one stock with one Batch No
     @OneToOne
     private GRN grn;
-    @JsonBackReference
+    /*@JsonBackReference
     @ManyToMany(mappedBy = "relatedStockRecords")
-    Set<SalesRecord> salesRecords = new HashSet<>();
+    Set<SalesRecord> salesRecords = new HashSet<>();*/
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "stockRecord")
+    private Set<SalesWithStockDetail> salesWithStockDetailSet = new HashSet<>();
 }

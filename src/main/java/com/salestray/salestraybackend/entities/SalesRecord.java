@@ -1,5 +1,6 @@
 package com.salestray.salestraybackend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
@@ -20,10 +21,6 @@ public class SalesRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sales_record_id")
     private Long id;
-    @Column(name = "sold_quantity", nullable = false)
-    private Long soldQuantity;
-    @Column(name = "sold_price")
-    private Double soldPrice;
     @Column(name = "created_on")
     private Date createdOn;
     @Column(name = "created_by")
@@ -37,12 +34,17 @@ public class SalesRecord {
     @ManyToOne
     private SaleType saleType;
     // one sale can have many items
-    @JsonManagedReference
+    /*@JsonManagedReference
     @ManyToMany
     @JoinTable(
             name = "sales_record_has_stock_record",
             joinColumns = @JoinColumn(name = "sales_record_id"),
             inverseJoinColumns = @JoinColumn(name = "stock_record_id")
     )
-    private Set<StockRecord> relatedStockRecords = new HashSet<>();
+    private Set<StockRecord> relatedStockRecords = new HashSet<>();*/
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "salesRecord")
+    private Set<SalesWithStockDetail> salesWithStockDetailSet = new HashSet<>();
+
 }
