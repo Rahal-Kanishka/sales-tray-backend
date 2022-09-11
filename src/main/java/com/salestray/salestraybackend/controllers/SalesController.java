@@ -2,6 +2,7 @@ package com.salestray.salestraybackend.controllers;
 
 import com.salestray.salestraybackend.DTOs.SalesOnlyDTO;
 import com.salestray.salestraybackend.DTOs.SalesWithStockDetailsDTO;
+import com.salestray.salestraybackend.DTOs.requestDTOs.CreateSalesRecordDTO;
 import com.salestray.salestraybackend.entities.SalesRecord;
 import com.salestray.salestraybackend.entities.SalesWithStockDetail;
 import com.salestray.salestraybackend.repositories.SalesRecordRepository;
@@ -9,9 +10,7 @@ import com.salestray.salestraybackend.repositories.SalesWithStockDetailRepositor
 import com.salestray.salestraybackend.repositories.StockRecordRepository;
 import com.salestray.salestraybackend.services.SalesRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -63,7 +62,8 @@ public class SalesController implements BasicController<SalesRecord> {
         return null;
     }
 
-    public SalesRecord add(SalesOnlyDTO salesOnlyDTO){
-        return this.salesRecordService.createSalesRecord(salesOnlyDTO);
+    @PostMapping(path="/add")
+    public SalesWithStockDetail add(@RequestBody CreateSalesRecordDTO createSalesRecordDTO){
+        return this.salesRecordService.createSalesRecord(createSalesRecordDTO);
     }
 }
