@@ -5,12 +5,16 @@ import com.salestray.salestraybackend.DTOs.SalesWithStockDetailsDTO;
 import com.salestray.salestraybackend.DTOs.requestDTOs.CreateSalesRecordDTO;
 import com.salestray.salestraybackend.entities.SalesRecord;
 import com.salestray.salestraybackend.entities.SalesWithStockDetail;
+import com.salestray.salestraybackend.exceptions.ObjectNotFoundException;
+import com.salestray.salestraybackend.exceptions.ValidationException;
 import com.salestray.salestraybackend.repositories.SalesRecordRepository;
 import com.salestray.salestraybackend.repositories.SalesWithStockDetailRepository;
 import com.salestray.salestraybackend.repositories.StockRecordRepository;
 import com.salestray.salestraybackend.services.SalesRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -65,6 +69,11 @@ public class SalesController implements BasicController<SalesRecord> {
 
     @PostMapping(path="/add")
     public SalesWithStockDetail add(@RequestBody CreateSalesRecordDTO createSalesRecordDTO){
-        return this.salesRecordService.createSalesRecord(createSalesRecordDTO);
+       try {
+           return this.salesRecordService.createSalesRecord(createSalesRecordDTO);
+       } catch (ValidationException | ObjectNotFoundException e) {
+           throw new ResponseStatusException(
+                   HttpStatus.BAD_REQUEST,e.getMessage(), e);
+       }
     }
 }
