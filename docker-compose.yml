@@ -1,0 +1,44 @@
+services:
+  mysqldb:
+    image: "mysql:8.0"
+    restart: always
+    container_name: mysqldb
+    networks:
+      - sales-tray
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: sales-tray
+      MYSQL_USER: rahal
+      MYSQL_PASSWORD: 123
+      MYSQL_ROOT_PASSWORD: root
+  api-service:
+    image: "rahaldocker/sales-tray-backend:v1.0"
+    restart: always
+    container_name: api-service
+    networks:
+      - sales-tray
+    ports:
+      - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/sales-tray?allowPublicKeyRetrieval=true
+    depends_on:
+      - mysqldb
+    volumes:
+      - .m2:/root/.m2
+  web:
+    image: "rahaldocker/sales-tray-frontend:v1.42"
+    restart: always
+    container_name: web
+    networks:
+      - sales-tray
+    ports:
+      - 81:81
+    depends_on:
+      - mysqldb
+      - api-service
+
+networks:
+  sales-tray:
+    driver: bridge
+    external: true
