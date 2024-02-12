@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="/user")
-public class UserController {
+public class UserController  implements BasicController<User>{
 
     @Autowired
     private UserRepository userRepository;
@@ -27,5 +27,25 @@ public class UserController {
     @RequestMapping(path = "/all")
     public @ResponseBody List<User> getAllUsers() {
         return this.userRepository.findAll();
+    }
+
+    @Override
+    public List<User> all() {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public User update(User user) {
+        return null;
+    }
+
+    @Override
+    public User getById(Long id) {
+        return null;
     }
 }

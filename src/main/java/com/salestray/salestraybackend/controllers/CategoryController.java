@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "category")
-public class CategoryController {
+public class CategoryController implements BasicController<Category> {
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -45,5 +45,25 @@ public class CategoryController {
     public @ResponseBody Category updateCategory(@RequestBody Category category) {
         Category result = categoryRepository.save(category);
         return result;
+    }
+
+    @Override
+    public List<Category> all() {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public Category update(Category category) {
+        return null;
+    }
+
+    @Override
+    public Category getById(Long id) {
+        return null;
     }
 }
