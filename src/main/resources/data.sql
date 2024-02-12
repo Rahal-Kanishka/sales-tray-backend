@@ -1,0 +1,21 @@
+INSERT INTO `category` VALUES (1,'Herbal',NULL,NULL,NULL,NULL),(2,'Medicinal',NULL,NULL,NULL,NULL),(3,'First Aid',NULL,NULL,NULL,NULL),(4,'Stationary',NULL,NULL,NULL,NULL),(5,'Fast Food',NULL,NULL,NULL,NULL),(6,'Personal Care',NULL,NULL,NULL,NULL),(7,'Hardware Tools',NULL,NULL,NULL,NULL),(8,'Car Tires','2022-08-17 05:18:19',NULL,NULL,NULL);
+
+INSERT INTO `item` VALUES (1,'SDLPA','Siddahlepa',NULL,NULL,1,'2022-08-17 06:12:53',NULL,NULL,NULL),(2,'PLKIRI','Polkiri',NULL,NULL,2,'2022-08-18 21:42:27',NULL,NULL,NULL),(3,'BTDIN','Betadin',NULL,NULL,3,'2022-08-18 21:43:42',NULL,NULL,NULL),(4,'SMPOSHA','Samaposha',20,NULL,3,'2022-08-18 21:44:22',NULL,NULL,NULL);
+
+INSERT INTO `supplier` VALUES (1,'Namal Enterpises','Gampaha','adas@gmail.com','+94713420223',1,NULL,NULL,NULL),(2,'Gihan Suppliers','Colombo 10','fsdegr@gmail.com','+94713420225',1,NULL,NULL,NULL);
+
+INSERT INTO `grn` VALUES (1,20.00,100,1,1,1),(2,35.99,124,2,2,1),(3,45.99,75,1,1,2);
+
+INSERT INTO `retailer` VALUES (1,'Kasun Grocery','Colombo','0714530278','fdf@gmail.com',1,NULL,NULL,NULL),(2,'Ishara Traders','Gampaha','0774522305','edfewff@gmail.com',1,NULL,NULL,NULL);
+
+INSERT INTO `sale_type` VALUES (1,'Cash'),(2,'Credit'),(3,'Exchange');
+
+INSERT INTO `stock_record` VALUES (1,22.50,100,0,'1',NULL,NULL,NULL,1),(2,40.00,124,0,'1',NULL,NULL,NULL,2),(3,25.00,100,0,'1',NULL,NULL,NULL,3);
+
+INSERT INTO `sales_record` VALUES (1,1,NULL,NULL,NULL,1,1),(2,1,NULL,NULL,NULL,2,2),(3,1,'2022-09-11 11:50:52',NULL,NULL,2,1),(4,1,'2022-09-11 11:52:55',NULL,NULL,2,1),(5,1,'2022-09-11 11:55:18',NULL,NULL,2,2);
+
+INSERT INTO `sales_record_has_stock_record` VALUES (1,1,1,24.99,32,799.68,0,NULL,1,NULL,NULL),(2,1,2,25.76,60,1545.6,0,NULL,1,NULL,NULL),(3,2,2,30.99,24,743.76,0,NULL,1,NULL,NULL),(4,2,3,20.75,17,352.75,0,NULL,1,NULL,NULL),(5,4,2,20.25,20,405,0,'2022-09-11 11:52:55',1,NULL,NULL),(6,5,3,30.25,15,453.75,0,'2022-09-11 11:55:18',1,NULL,NULL);
+
+INSERT INTO `user_type` VALUES (1,'Admin'),(2,'General'),(3,'Restricted');
+
+INSERT INTO `user_info` VALUES (1,'Admin',NULL,'admin@gmail.com',NULL,1,NULL,NULL,NULL,NULL,1,'123',NULL);
